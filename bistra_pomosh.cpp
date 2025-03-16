@@ -30,7 +30,7 @@ void quickSort(vector<int> &a, int left, int right) {
 }
 
 int main() {
-    ifstream input("input.txt");
+    ifstream input("C:\\c++ projectX\\input.txt");
     ofstream output("output.txt");
 
     int N, L;
