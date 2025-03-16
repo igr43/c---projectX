@@ -1,5 +1,2 @@
-4
-KVN
-ACM
-FSB
-GGG
+2 10
+8 5
