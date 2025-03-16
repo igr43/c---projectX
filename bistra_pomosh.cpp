@@ -4,6 +4,31 @@
 
 using namespace std;
 
+void quickSort(vector<int> &a, int left, int right) {
+    if (left > right) return;
+    
+    int p = a[(left + right) / 2];
+    int i = left;
+    int j = right;
+    
+    while (i <= j) {
+        while (a[i] < p) {
+            i++;
+        }
+        while (a[j] > p) {
+            j--;
+        }
+        if (i <= j) {
+            swap(a[i], a[j]);
+            i++;
+            j--;
+        }
+    }
+    
+    quickSort(a, left, j);
+    quickSort(a, i, right);
+}
+
 int main() {
     ifstream input("input.txt");
     ofstream output("output.txt");
@@ -16,15 +41,7 @@ int main() {
         input >> a[i];
     }
 
-    for (int i = 0; i < N - 1; ++i) {
-        for (int j = 0; j < N - i - 1; ++j) {
-            if (a[j] > a[j + 1]) {
-                int temp = a[j];
-                a[j] = a[j + 1];
-                a[j + 1] = temp;
-            }
-        }
-    }
+    quickSort(a, 0, N - 1);
 
     long long totalTime = 0;
     for (int i = 0; i < N; ++i) {
